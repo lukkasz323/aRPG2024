@@ -1,5 +1,13 @@
+import { Modifier } from "./modifier.js";
 export class Item {
-    modifiers;
+    mods = [];
     constructor() {
+    }
+    static Generate() {
+        const item = new Item();
+        while (Math.random() <= 0.5) {
+            item.mods.push(Modifier.Generate());
+        }
+        return item;
     }
 }
