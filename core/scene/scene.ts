@@ -5,5 +5,6 @@ export class Scene {
     item: Item = Item.Generate();
 
     constructor() {
+        console.log(this);
     }
 }

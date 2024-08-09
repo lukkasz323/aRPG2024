@@ -5,7 +5,7 @@ export class Item {
     }
     static Generate() {
         const item = new Item();
-        while (Math.random() <= 0.5) {
+        while (Math.random() <= 0.1) {
             item.mods.push(Modifier.Generate());
         }
         return item;

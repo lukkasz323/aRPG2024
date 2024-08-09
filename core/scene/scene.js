@@ -3,5 +3,6 @@ export class Scene {
     ticks;
     item = Item.Generate();
     constructor() {
+        console.log(this);
     }
 }

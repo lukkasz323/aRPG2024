@@ -15,7 +15,7 @@ function renderBackground(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasEleme
 function renderItemDescription(ctx: CanvasRenderingContext2D, scene: Scene) {
     ctx.strokeStyle = "black";
     ctx.lineWidth = 2;
-    ctx.strokeRect( 32, 32, 256, 512);
+    ctx.strokeRect(32, 32, 256, 512);
 
     ctx.fillStyle = "black";
     ctx.font = "bold 16px arial"
