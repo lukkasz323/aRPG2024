@@ -4,9 +4,9 @@ export function renderGame(scene: Scene, canvas: HTMLCanvasElement) {
     const ctx = canvas.getContext("2d");
 
     renderBackground(ctx, canvas);
-    renderItemDescription(ctx, scene);
-    renderItems(ctx, scene);
-    renderItemCountByRarity(ctx, scene);
+    //renderItemDescription(ctx, scene);
+    //renderItems(ctx, scene);
+    //renderItemCountByRarity(ctx, scene);
 }
 
 function renderBackground(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {

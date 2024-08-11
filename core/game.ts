@@ -15,10 +15,23 @@ export class Game {
 
         renderGame(this.scene, this.canvas);
         setInterval(() => gameLoop(this.scene, this.canvas), 1000 / fps);
+        this.#addEventListeners();
         
         function gameLoop(scene: Scene, canvas: HTMLCanvasElement) {
             updateGame(scene);
             renderGame(scene, canvas);
-        }
+        }        
+    }
+
+    #addEventListeners() {
+        this.canvas.addEventListener("mousedown", (event: PointerEvent) => this.#onMouseDown(event));
+        this.canvas.addEventListener("mouseup", (event: PointerEvent) => this.#onMouseUp(event));
+    }
+
+    #onMouseDown(event: PointerEvent) {
+        console.log("mouse down!", event);
+    }
+    #onMouseUp(event: PointerEvent) {
+        console.log("mouse up!", event);
     }
 }
