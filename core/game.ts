@@ -3,11 +3,10 @@ import { renderGame } from "./render.js";
 import { updateGame } from "./update.js";
 
 export class Game {
-    scene: Scene = new Scene;
-    canvas: HTMLCanvasElement;
+    scene: Scene;
 
-    constructor(canvas: HTMLCanvasElement) {
-        this.canvas = canvas;
+    constructor(public canvas: HTMLCanvasElement) {
+        this.scene = new Scene(canvas);
     }
 
     run() {
@@ -24,14 +23,8 @@ export class Game {
     }
 
     #addEventListeners() {
-        this.canvas.addEventListener("mousedown", (event: PointerEvent) => this.#onMouseDown(event));
-        this.canvas.addEventListener("mouseup", (event: PointerEvent) => this.#onMouseUp(event));
-    }
-
-    #onMouseDown(event: PointerEvent) {
-        console.log("mouse down!", event);
-    }
-    #onMouseUp(event: PointerEvent) {
-        console.log("mouse up!", event);
+        this.canvas.addEventListener("mousemove", (event: PointerEvent) => this.scene.mouseState.onMouseMove(event));
+        this.canvas.addEventListener("mousedown", (event: PointerEvent) => this.scene.mouseState.onMouseDown(event));
+        this.canvas.addEventListener("mouseup", (event: PointerEvent) => this.scene.mouseState.onMouseUp(event));
     }
 }

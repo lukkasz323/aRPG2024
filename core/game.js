@@ -2,10 +2,11 @@ import { Scene } from "./scene/scene.js";
 import { renderGame } from "./render.js";
 import { updateGame } from "./update.js";
 export class Game {
-    scene = new Scene;
     canvas;
+    scene;
     constructor(canvas) {
         this.canvas = canvas;
+        this.scene = new Scene(canvas);
     }
     run() {
         const fps = 60;
@@ -18,13 +19,8 @@ export class Game {
         }
     }
     #addEventListeners() {
-        this.canvas.addEventListener("mousedown", (event) => this.#onMouseDown(event));
-        this.canvas.addEventListener("mouseup", (event) => this.#onMouseUp(event));
-    }
-    #onMouseDown(event) {
-        console.log("mouse down!", event);
-    }
-    #onMouseUp(event) {
-        console.log("mouse up!", event);
+        this.canvas.addEventListener("mousemove", (event) => this.scene.mouseState.onMouseMove(event));
+        this.canvas.addEventListener("mousedown", (event) => this.scene.mouseState.onMouseDown(event));
+        this.canvas.addEventListener("mouseup", (event) => this.scene.mouseState.onMouseUp(event));
     }
 }
