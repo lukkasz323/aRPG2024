@@ -1,6 +1,8 @@
 export function renderGame(scene, canvas) {
     const ctx = canvas.getContext("2d");
     renderBackground(ctx, canvas);
+    renderEntities(ctx, scene);
+    renderGrid(ctx, canvas);
     //renderItemDescription(ctx, scene);
     //renderItems(ctx, scene);
     //renderItemCountByRarity(ctx, scene);
@@ -8,6 +10,25 @@ export function renderGame(scene, canvas) {
 function renderBackground(ctx, canvas) {
     ctx.fillStyle = "#AAA";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+function renderGrid(ctx, canvas) {
+    ctx.fillStyle = "black";
+    ctx.lineWidth = 2;
+    for (let y = 0; y < canvas.height; y++) {
+        for (let x = 0; x < canvas.width; x++) {
+            ctx.strokeRect(x * 32, y * 32, 32, 32);
+        }
+    }
+}
+function renderEntities(ctx, scene) {
+    // Player
+    ctx.fillStyle = "blue";
+    ctx.fillRect(scene.player.entity.origin.x * 32, scene.player.entity.origin.y * 32, 32, 32);
+    // Enemies
+    ctx.fillStyle = "red";
+    for (const e of scene.enemies) {
+        ctx.fillRect(e.origin.x * 32, e.origin.y * 32, 32, 32);
+    }
 }
 function renderItemDescription(ctx, scene) {
     ctx.strokeStyle = "black";

@@ -23,8 +23,10 @@ export class Game {
     }
 
     #addEventListeners() {
-        this.canvas.addEventListener("mousemove", (event: PointerEvent) => this.scene.mouseState.onMouseMove(event));
-        this.canvas.addEventListener("mousedown", (event: PointerEvent) => this.scene.mouseState.onMouseDown(event));
-        this.canvas.addEventListener("mouseup", (event: PointerEvent) => this.scene.mouseState.onMouseUp(event));
+        this.canvas.addEventListener("mousemove", (event: PointerEvent) => this.scene.inputState.onMouseMove(event));
+        this.canvas.addEventListener("mousedown", (event: PointerEvent) => this.scene.inputState.onMouseDown(event));
+        this.canvas.addEventListener("mouseup", (event: PointerEvent) => this.scene.inputState.onMouseUp(event));
+        document.addEventListener("keydown", (event: KeyboardEvent) => this.scene.inputState.onKeyDown(event));
+        document.addEventListener("keyup", (event: KeyboardEvent) => this.scene.inputState.onKeyUp(event));
     }
 }

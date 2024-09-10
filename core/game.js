@@ -19,8 +19,10 @@ export class Game {
         }
     }
     #addEventListeners() {
-        this.canvas.addEventListener("mousemove", (event) => this.scene.mouseState.onMouseMove(event));
-        this.canvas.addEventListener("mousedown", (event) => this.scene.mouseState.onMouseDown(event));
-        this.canvas.addEventListener("mouseup", (event) => this.scene.mouseState.onMouseUp(event));
+        this.canvas.addEventListener("mousemove", (event) => this.scene.inputState.onMouseMove(event));
+        this.canvas.addEventListener("mousedown", (event) => this.scene.inputState.onMouseDown(event));
+        this.canvas.addEventListener("mouseup", (event) => this.scene.inputState.onMouseUp(event));
+        document.addEventListener("keydown", (event) => this.scene.inputState.onKeyDown(event));
+        document.addEventListener("keyup", (event) => this.scene.inputState.onKeyUp(event));
     }
 }

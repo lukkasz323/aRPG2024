@@ -7,7 +7,5 @@ export function updateGame(scene: Scene) {
     if (scene.ticks % 60 == 0) {
     }
 
-    console.log(scene.mouseState.screenOrigin);
-
     ++scene.ticks;
 }

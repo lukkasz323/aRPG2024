@@ -1,7 +1,7 @@
 import { Vector2 } from "../../utils/vector2";
 import { Scene } from "./scene";
 
-export class MouseState {
+export class InputState {
     screenOrigin: Vector2;
     //worldOrigin: Vector2;
 
@@ -23,5 +23,11 @@ export class MouseState {
     }
 
     onMouseUp(event: PointerEvent) {
+    }
+
+    onKeyDown(event: KeyboardEvent) {
+    }
+
+    onKeyUp(event: KeyboardEvent) {
     }
 }
