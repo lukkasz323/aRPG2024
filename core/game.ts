@@ -13,14 +13,19 @@ export class Game {
     }
 
     run() {
-        const fps = 60;
+        const targetFPS = 60;
 
-        renderGame(this.scene, this.canvas);
-        setInterval(() => gameLoop(this.scene, this.canvas, this.input), 1000 / fps);
+        //renderGame(this.scene, this.canvas);
+        let lastDate = performance.now();
+        setInterval(() => gameLoop(this.scene, this.canvas, this.input), 1000 / targetFPS);
         this.input.addEventListeners();
         
         function gameLoop(scene: Scene, canvas: HTMLCanvasElement, input: Input) {
-            updateGame(scene, input);
+            let now = performance.timeOrigin + performance.now();
+            let deltaTime = now - lastDate;
+            lastDate = now;
+
+            updateGame(scene, input, deltaTime);
             renderGame(scene, canvas);
         }        
     }

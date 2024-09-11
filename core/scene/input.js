@@ -6,6 +6,7 @@ export class Input {
     keyS = false;
     keyA = false;
     keyD = false;
+    showFPS = false;
     constructor(canvas) {
         this.canvas = canvas;
     }
@@ -41,6 +42,9 @@ export class Input {
                 break;
             case "KeyD":
                 this.keyD = true;
+                break;
+            case "Backquote":
+                this.showFPS = !this.showFPS;
                 break;
         }
     }

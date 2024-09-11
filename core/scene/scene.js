@@ -1,6 +1,9 @@
+import { FPSCounter } from "../../utils/fpsCounter.js";
 import { Entity } from "./entity.js";
 import { Player } from "./player.js";
 export class Scene {
+    gridSize = 32;
+    fpsCounter = new FPSCounter();
     ticks = 0;
     items = [];
     player = new Player();

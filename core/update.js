@@ -1,5 +1,9 @@
 import { Item } from "./scene/item.js";
-export function updateGame(scene, input) {
+export function updateGame(scene, input, deltaTime) {
+    if (input.showFPS) {
+        scene.fpsCounter.update(deltaTime);
+        console.log(scene.fpsCounter.average);
+    }
     scene.items.push(Item.Generate());
     // Keyboard
     if (input.keyW)

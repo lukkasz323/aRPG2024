@@ -2,7 +2,7 @@ export function renderGame(scene, canvas) {
     const ctx = canvas.getContext("2d");
     renderBackground(ctx, canvas);
     renderEntities(ctx, scene);
-    renderGrid(ctx, canvas);
+    renderGrid(ctx, scene, canvas);
     //renderItemDescription(ctx, scene);
     //renderItems(ctx, scene);
     //renderItemCountByRarity(ctx, scene);
@@ -11,23 +11,23 @@ function renderBackground(ctx, canvas) {
     ctx.fillStyle = "#AAA";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
-function renderGrid(ctx, canvas) {
+function renderGrid(ctx, scene, canvas) {
     ctx.fillStyle = "black";
     ctx.lineWidth = 2;
-    for (let y = 0; y < canvas.height; y++) {
-        for (let x = 0; x < canvas.width; x++) {
-            ctx.strokeRect(x * 32, y * 32, 32, 32);
+    for (let y = 0; y < canvas.height / scene.gridSize; y++) {
+        for (let x = 0; x < canvas.width / scene.gridSize; x++) {
+            ctx.strokeRect(x * scene.gridSize, y * scene.gridSize, scene.gridSize, scene.gridSize);
         }
     }
 }
 function renderEntities(ctx, scene) {
     // Player
     ctx.fillStyle = "blue";
-    ctx.fillRect(scene.player.entity.origin.x * 32, scene.player.entity.origin.y * 32, 32, 32);
+    ctx.fillRect(scene.player.entity.origin.x * scene.gridSize, scene.player.entity.origin.y * scene.gridSize, scene.gridSize, scene.gridSize);
     // Enemies
     ctx.fillStyle = "red";
     for (const e of scene.enemies) {
-        ctx.fillRect(e.origin.x * 32, e.origin.y * 32, 32, 32);
+        ctx.fillRect(e.origin.x * scene.gridSize, e.origin.y * scene.gridSize, scene.gridSize, scene.gridSize);
     }
 }
 function renderItemDescription(ctx, scene) {

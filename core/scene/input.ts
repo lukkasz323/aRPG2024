@@ -8,6 +8,8 @@ export class Input {
     keyS: boolean = false;
     keyA: boolean = false;
     keyD: boolean = false;
+
+    showFPS: boolean = false;
     
     constructor(public canvas: HTMLCanvasElement) {
     }
@@ -38,20 +40,23 @@ export class Input {
     }
 
     #onKeyDown(e: KeyboardEvent) {
-            switch (e.code) {
-                case "KeyW":
-                    this.keyW = true;
-                    break;
-                case "KeyS":
-                    this.keyS = true;
-                    break;
-                case "KeyA":
-                    this.keyA = true;
-                    break;
-                case "KeyD":
-                    this.keyD = true;
-                    break;
-            }
+        switch (e.code) {
+            case "KeyW":
+                this.keyW = true;
+                break;
+            case "KeyS":
+                this.keyS = true;
+                break;
+            case "KeyA":
+                this.keyA = true;
+                break;
+            case "KeyD":
+                this.keyD = true;
+                break;
+            case "Backquote":
+                this.showFPS = !this.showFPS;
+                break;
+        }
     }
 
     #onKeyUp(e: KeyboardEvent) {
