@@ -12,17 +12,17 @@ export class Game {
         this.input = new Input(canvas);
     }
     run() {
-        const targetFPS = 60;
         //renderGame(this.scene, this.canvas);
         let lastDate = performance.now();
-        setInterval(() => gameLoop(this.scene, this.canvas, this.input), 1000 / targetFPS);
+        requestAnimationFrame(() => gameLoop(this.scene, this.canvas, this.input));
         this.input.addEventListeners();
         function gameLoop(scene, canvas, input) {
-            let now = performance.timeOrigin + performance.now();
+            let now = performance.now();
             let deltaTime = now - lastDate;
             lastDate = now;
             updateGame(scene, input, deltaTime);
             renderGame(scene, canvas);
+            requestAnimationFrame(() => gameLoop(scene, canvas, input));
         }
     }
 }

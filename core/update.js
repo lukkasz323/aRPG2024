@@ -2,7 +2,7 @@ import { Item } from "./scene/item.js";
 export function updateGame(scene, input, deltaTime) {
     if (input.showFPS) {
         scene.fpsCounter.update(deltaTime);
-        console.log(scene.fpsCounter.average);
+        console.log(scene.fpsCounter.calculateAverage());
     }
     scene.items.push(Item.Generate());
     // Keyboard
@@ -15,7 +15,7 @@ export function updateGame(scene, input, deltaTime) {
     if (input.keyD)
         scene.player.entity.origin.x++;
     // Every second
-    if (scene.ticks % 60 == 0) {
+    if (scene.ticks % deltaTime == 0) {
     }
     scene.ticks++;
 }
